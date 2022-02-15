@@ -1,0 +1,27 @@
+server.port: 8007
+spring:
+   kafka:
+      consumer:
+         bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+         group-id: group1
+         auto-offset-reset: earliest
+         key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+         value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+         fetch-min-size: 16384
+         max-poll-records: 1000
+         listener:
+            type: batch
+         properties:
+            spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+            spring.deserializer.value.delegate.class: com.example.demo.serializer.LocationDeserializer     
+   datasource:
+      url: jdbc:h2:mem:mydb
+      driverClassName: org.h2.Driver
+      username: sa
+      password:
+      schema: classpath:/schema.sql
+   jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true
+   h2:
+      console.enabled: true   
