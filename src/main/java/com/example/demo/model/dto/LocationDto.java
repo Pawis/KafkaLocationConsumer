@@ -55,5 +55,12 @@ public class LocationDto {
 	}
 
 
+	@Override
+	public String toString() {
+		return "LocationDto [deviceId=" + deviceId + ", latitiude=" + latitiude + ", longitude=" + longitude + "]";
+	}
+	
+	
+
 
 }

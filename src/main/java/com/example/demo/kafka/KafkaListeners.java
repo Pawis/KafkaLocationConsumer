@@ -32,8 +32,9 @@ public class KafkaListeners {
 		this.mapstructMapper = mapstructMapper;
 	}
 
-	@KafkaListener(topics = "gps5")
+	@KafkaListener(topics = "locations")
 	public void listener1(List<ConsumerRecord<String,LocationDto>> location) {
+		
 		for(ConsumerRecord<String,LocationDto> data : location) {
 
 			if(data.value() == null) {
